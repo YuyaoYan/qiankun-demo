@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     handleClick(param) {
-      let path = `/microapp/${param}`;
+      let path = `/#/sub/micro-app/${param}`;
       history.pushState(null, path, path);
     },
   },

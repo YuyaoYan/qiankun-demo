@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       microApps,
-      current: "/microapp",
+      current: microApps[0].activeRule,
     };
   },
   methods: {
@@ -36,7 +36,8 @@ export default {
     },
   },
   created() {
-    const path = window.location.pathname;
+    this.current = microApps[0].activeRule;
+    let path = `/${window.location.hash}`;
     if (this.microApps.findIndex((item) => item.activeRule === path) >= 0) {
       this.current = path;
     }
