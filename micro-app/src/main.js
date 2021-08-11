@@ -3,9 +3,10 @@ import App from "./App.vue";
 import routes from "./router";
 // import store from "./store";
 import VueRouter from "vue-router";
-
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 Vue.config.productionTip = false;
-
+Vue.use(ElementUI);
 let install = null;
 function render(props = {}) {
   const { container, routerBase } = props;
