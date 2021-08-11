@@ -8,7 +8,7 @@ import { name } from "../../package.json";
 
 Vue.use(VueRouter);
 
-let prefix = window.__POWERED_BY_QIANKUN__ ? `/sub/${name}` : "/";
+let prefix = window.__POWERED_BY_QIANKUN__ ? `/sub/${name}/` : "/";
 console.log("name", name, prefix);
 const routes = [
   {
@@ -17,17 +17,17 @@ const routes = [
     component: Home,
     children: [
       {
-        path: `${prefix}/one`,
+        path: `${prefix}one`,
         component: One
       },
       {
-        path: `${prefix}/two`,
+        path: `${prefix}two`,
         component: Two
       }
     ]
   },
   {
-    path: `${prefix}/about`,
+    path: `${prefix}about`,
     name: "about",
     component: About
   }

@@ -23,8 +23,12 @@ export default {
   },
   methods: {
     handleClick(param) {
-      let path = `/#/sub/micro-app/${param}`;
-      history.pushState(null, path, path);
+      // let path = `/#/sub/micro-app/${param}`;
+      // history.pushState(null, path, path);
+
+      this.$router.push({
+        path: `/${param}`,
+      });
     },
   },
 };

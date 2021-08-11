@@ -21,7 +21,6 @@ function render(props = {}) {
   if (window.__POWERED_BY_QIANKUN__) {
     router.beforeEach((to, from, next) => {
       // to and from are both route objects. must call `next`.
-      console.log('-----',name, to.path);
       if (!to.path.includes("/sub")) {
         next({ path: `/sub/${name}${to.path}` });
       } else {
