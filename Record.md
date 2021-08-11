@@ -30,5 +30,9 @@ npm-run-all 提供了多种运行多个命令的方式，常用的有以下几�
 ### history 路由
 
 ```js
-history.pushState(null, '/one', '/one'); 
+history.pushState(null, '/one', '/one');
 ```
+
+### 生成 md 目录
+
+`npx markdown-toc README.md
