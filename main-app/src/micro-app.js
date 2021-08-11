@@ -8,7 +8,7 @@ const microApps = [
   {
     name: "sub-app",
     entry: '//localhost:4002',
-    activeRule: "/#/sub/subapp"
+    activeRule: "/#/sub/sub-app"
   }
 ];
 

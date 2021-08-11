@@ -1,2 +1,2 @@
-VUE_APP_MICRO_APP=http://localhost:3001/subapp/microapp/
-VUE_APP_SUB_APP=http://localhost:3002/subapp/subapp/
+VUE_APP_MICRO_APP=http://localhost:4001/sub/micro-app/
+VUE_APP_SUB_APP=http://localhost:4002/sub/sub-app/
