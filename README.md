@@ -1,10 +1,11 @@
 # qiankun 微前端 demo 说明
 
-- [qiankun 微前端 demo 说明](#qiankun-%E5%BE%AE%E5%89%8D%E7%AB%AF-demo-%E8%AF%B4%E6%98%8E)
-    + [路由说明：](#%E8%B7%AF%E7%94%B1%E8%AF%B4%E6%98%8E)
-        * [hash 路由：](#hash-%E8%B7%AF%E7%94%B1)
+启动：
+```
+$ npm start
+```
 
-项目目录见 `ProjectTree.md`。
+项目文件说明见 `ProjectTree.md`。
 
 通过`npm-run-all`包启动所有应用，主应用 main-app 采用动态路由嵌入两个子应用：`micro-app`和`sub-app`。
 
