@@ -13,11 +13,11 @@ $ npm start
 
 ---
 
-### 路由说明：
+### 1. 路由说明：
 
 
 
-##### hash 路由：
+##### 1.1 hash 路由：
 
 通过`window.__POWERED_BY_QIANKUN__`增加路由判断,给子应用匹配统一的路由器前缀`/sub`。
 
@@ -25,4 +25,18 @@ $ npm start
 
 事实上，我们提倡微应用单独开发。
 
-##### history 路由：
+##### 1.2 history 路由：
+
+
+
+### 2. LifeCycles:
+
+```js
+type Lifecycle = (app: RegistrableApp) => Promise<any>;
+
+beforeLoad - Lifecycle | Array<Lifecycle> - 可选
+beforeMount - Lifecycle | Array<Lifecycle> - 可选
+afterMount - Lifecycle | Array<Lifecycle> - 可选
+beforeUnmount - Lifecycle | Array<Lifecycle> - 可选
+afterUnmount - Lifecycle | Array<Lifecycle> - 可选
+```

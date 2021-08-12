@@ -42,13 +42,18 @@ if (window.__POWERED_BY_QIANKUN__) {
   render();
 }
 
-export async function bootstrap() {}
+export async function bootstrap() {
+  console.log('micro app bootstrap');
+
+}
 
 export async function mount(props) {
   render(props);
+  console.log('micro app mount');
 }
 export async function unmount() {
   install.$destroy();
   install.$el.innerHTML = ""; // 子项目内存泄露问题
   install = null;
+  console.log('micro app unmount');
 }
