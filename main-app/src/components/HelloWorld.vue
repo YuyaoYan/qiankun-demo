@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h5>{{ msg }}</h5>
+    <router-view></router-view>
   </div>
 </template>
 

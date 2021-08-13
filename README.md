@@ -40,3 +40,9 @@ afterMount - Lifecycle | Array<Lifecycle> - 可选
 beforeUnmount - Lifecycle | Array<Lifecycle> - 可选
 afterUnmount - Lifecycle | Array<Lifecycle> - 可选
 ```
+
+### 3. 父子通讯
+
+想要解决的问题：
+- 主应用与微应用的通信
+- 微应用之间的通信

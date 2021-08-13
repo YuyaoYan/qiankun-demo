@@ -3,6 +3,7 @@
     <div class="layout-header">
       <div class="logo">QIANKUN-MAIN</div>
       <ul class="sub-apps">
+        <li @click="jumpTo">main-app</li>
         <li
           v-for="item in microApps"
           :class="{ active: item.activeRule === current }"
@@ -13,7 +14,9 @@
         </li>
       </ul>
     </div>
-    <div id="subapp-viewport"></div>
+    <div id="subapp-viewport">
+      <!-- <router-view></router-view> -->
+    </div>
   </div>
 </template>
 
@@ -33,6 +36,14 @@ export default {
       console.log(item);
       this.current = item.activeRule;
       history.pushState(null, item.activeRule, item.activeRule); // 没引入路由，所以不能用路由切换
+    },
+
+    // 跳转主应用页面
+    jumpTo() {
+      // history.pushState(null, "/mainpage", "/mainpage"); // 没引入路由，所以不能用路由切换
+      this.$router.push({
+        path: "/mainpage",
+      });
     },
   },
   created() {
