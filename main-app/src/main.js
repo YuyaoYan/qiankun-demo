@@ -30,7 +30,7 @@ new Vue({
 // 主应用状态初始化
 // 通讯
 const actions = initGlobalState({
-  mt: "init", // 初始化state，里面内容您随意
+  mt: "init", // 初始化state
   msg: "",
   sendMsg: ""
 });

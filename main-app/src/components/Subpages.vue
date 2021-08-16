@@ -1,12 +1,12 @@
 <template >
   <div class="mainpage-Container">
-    <!-- <el-button plain @click="sendMessageToChildren">与子应用通信</el-button> -->
-    Test page jump btw mainapp and microapp.
+    <div id="microapp-inpage-viewport"></div>
+    <div id="subapp-inpage-viewport"></div>
   </div>
 </template>
 <script>
 export default {
-  name: "mainpage",
+  name: "Subpages",
   methods: {
     // sendMessageToChildren() {
     //   this.$actions.setGlobalState({

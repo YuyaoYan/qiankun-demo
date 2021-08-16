@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import MainAppEnterPage from "@/components/MainAppEnterPage";
 import Mainpage from "@/components/Mainpage";
+import Subpages from "@/components/Subpages";
 
 Vue.use(Router);
 
@@ -30,6 +31,12 @@ export default new Router({
           name: "mainpage",
           exact: true,
           component: Mainpage
+        },
+        {
+          path: "/main/subapps",
+          name: "subapps",
+          exact: true,
+          component: Subpages
         }
       ]
     }

@@ -3,7 +3,7 @@
     <div class="layout-header">
       <div class="logo">QIANKUN-MAIN</div>
       <ul class="sub-apps">
-        <li @click="jumpTo">main-app</li>
+        <li @click="jumpToMsinpage">main-app</li>
         <li
           v-for="item in microApps"
           :class="{ active: item.activeRule === current }"
@@ -12,6 +12,7 @@
         >
           {{ item.name }}
         </li>
+        <li @click="jumpToApps">communicate btw sub apps</li>
         <li>
           <el-input
             size="mini"
@@ -59,10 +60,16 @@ export default {
     },
 
     // 跳转主应用页面
-    jumpTo() {
+    jumpToMsinpage() {
       // history.pushState(null, "/main/mainpage", "/main/mainpage"); // 没引入路由，所以不能用路由切换
       this.$router.push({
         path: "/main/mainpage",
+      });
+    },
+    jumpToApps() {
+      // history.pushState(null, "/main/mainpage", "/main/mainpage"); // 没引入路由，所以不能用路由切换
+      this.$router.push({
+        path: "/main/subapps",
       });
     },
     sendMessageToChildren(v) {
@@ -112,5 +119,11 @@ body {
 .sub-apps li.active {
   color: #42b983;
   text-decoration: underline;
+}
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
 }
 </style>

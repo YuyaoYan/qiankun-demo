@@ -6,15 +6,16 @@
       <el-button @click="() => handleClick('two')" plain
         >another micro</el-button
       >
-      <p>接收主应用数据： {{ msg }}</p>
+      <p>Recived from main-app: {{ msg }}</p>
       <p>
         <el-input
           size="small"
           v-model="sendMsg"
-          placeholder="与子应用通信"
+          placeholder="与micro-app子应用通信"
           @change="sendMessageToFather"
         ></el-input>
       </p>
+      <p>Recived from sub-app: {{ msg }}</p>
     </div>
     <div class="content">
       <router-view />

@@ -3,12 +3,15 @@ const microApps = [
     name: "micro-app",
     entry: '//localhost:4001',
     // entry: process.env.VUE_APP_MICRO_APP,
-    activeRule: "/#/sub/micro-app"
+    activeRule: "/#/sub/micro-app",
+    // container: "#microapp-viewport",
   },
   {
     name: "sub-app",
     entry: '//localhost:4002',
-    activeRule: "/#/sub/sub-app"
+    activeRule: "/#/sub/sub-app",
+    // container: "#subapp-viewport",
+
   }
 ];
 
