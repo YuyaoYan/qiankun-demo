@@ -21,7 +21,7 @@
           ></el-input>
         </li>
         <li>
-          {{ msg }}
+          {{ childMsg || "Received from micro-app" }}
         </li>
       </ul>
     </div>
@@ -43,7 +43,13 @@ export default {
       microApps,
       current: microApps[0].activeRule,
       msg: "",
+      // childMsg: "",
     };
+  },
+  computed: {
+    childMsg() {
+      return this.$store && this.$store.state && this.$store.state.sendMsg;
+    },
   },
   methods: {
     goto(item) {

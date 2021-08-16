@@ -10,9 +10,9 @@
       <p>
         <el-input
           size="small"
-          v-model="msg"
+          v-model="sendMsg"
           placeholder="与子应用通信"
-          @change="sendMessageToChildren"
+          @change="sendMessageToFather"
         ></el-input>
       </p>
     </div>
@@ -29,10 +29,10 @@ export default {
     return {
       title: "Micro App",
       msg: "",
+      sendMsg: "",
     };
   },
   mounted() {
-    console.log("mounted sub===");
     // 增加state监听，当msg数据发生变化的时候，我们修改name，体现在页面上
     this.$onGlobalStateChange((state, prev) => {
       if (state.msg !== prev.msg) {
@@ -49,8 +49,9 @@ export default {
         path: `/${param}`,
       });
     },
-    sendMessageToChildren(v) {
-      this.msg = v;
+    sendMessageToFather(v) {
+      this.sendMsg = v;
+      this.$setGlobalState({ sendMsg: v });
     },
   },
 };

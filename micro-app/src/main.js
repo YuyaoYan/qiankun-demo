@@ -1,14 +1,19 @@
 import Vue from "vue";
+import Vuex from "vuex";
+import cloneDeep from "clone-deep";
 import App from "./App.vue";
 import routes from "./router";
-// import store from "./store";
+import store from "./store";
 import VueRouter from "vue-router";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import { name } from "../package.json";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
+Vue.use(Vuex);
 let install = null;
+Vue.prototype.$store = store;
+
 function render(props = {}) {
   const { container } = props;
   const router = new VueRouter({
@@ -28,9 +33,10 @@ function render(props = {}) {
       }
     });
   }
+  // let _store = initStore(props);
   install = new Vue({
     router,
-    // store,
+    store,
     render: h => h(App)
   }).$mount(container ? container.querySelector("#app") : "#app");
 }
@@ -47,11 +53,6 @@ export async function bootstrap() {
 }
 
 export async function mount(props) {
-  // render(props);
-  // console.log("micro app mount");
-
-  console.log("two mount", props);
-
   // 设置主应用下发的方法
   props.fn &&
     Object.keys(props.fn).forEach(method => {
