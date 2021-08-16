@@ -27,7 +27,9 @@ $ npm start
 
 ##### 1.2 history 路由：
 
-
+##### 路由切换
+- 主微
+- 微微
 
 ### 2. LifeCycles:
 
@@ -46,3 +48,7 @@ afterUnmount - Lifecycle | Array<Lifecycle> - 可选
 想要解决的问题：
 - 主应用与微应用的通信
 - 微应用之间的通信
+
+
+### Trouble Shooting
+1. 微应用切换回主应用路由后，主应用页面不加载不显示。

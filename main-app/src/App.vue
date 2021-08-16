@@ -12,11 +12,24 @@
         >
           {{ item.name }}
         </li>
+        <li>
+          <el-input
+            size="mini"
+            v-model="msg"
+            placeholder="与子应用通信"
+            @change="sendMessageToChildren"
+          ></el-input>
+        </li>
+        <li>
+          {{ msg }}
+        </li>
       </ul>
     </div>
     <div id="subapp-viewport">
-      <!-- <router-view></router-view> -->
+      <!-- 微应用销毁后，<router-view>将不存在，进而导致切换回主应用时页面不加载问题 -->
+      <router-view></router-view>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -29,6 +42,7 @@ export default {
     return {
       microApps,
       current: microApps[0].activeRule,
+      msg: "",
     };
   },
   methods: {
@@ -40,9 +54,14 @@ export default {
 
     // 跳转主应用页面
     jumpTo() {
-      // history.pushState(null, "/mainpage", "/mainpage"); // 没引入路由，所以不能用路由切换
+      // history.pushState(null, "/main/mainpage", "/main/mainpage"); // 没引入路由，所以不能用路由切换
       this.$router.push({
-        path: "/mainpage",
+        path: "/main/mainpage",
+      });
+    },
+    sendMessageToChildren(v) {
+      this.$actions.setGlobalState({
+        msg: v,
       });
     },
   },

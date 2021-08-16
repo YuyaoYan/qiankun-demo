@@ -1,11 +1,20 @@
 <template>
   <div class="base-container">
     <div class="option">
-      <h1>{{ msg }}</h1>
+      <h1>{{ title }}</h1>
       <el-button @click="() => handleClick('one')" plain>micro one</el-button>
       <el-button @click="() => handleClick('two')" plain
         >another micro</el-button
       >
+      <p>接收主应用数据： {{ msg }}</p>
+      <p>
+        <el-input
+          size="small"
+          v-model="msg"
+          placeholder="与子应用通信"
+          @change="sendMessageToChildren"
+        ></el-input>
+      </p>
     </div>
     <div class="content">
       <router-view />
@@ -18,8 +27,18 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      msg: "Micro App",
+      title: "Micro App",
+      msg: "",
     };
+  },
+  mounted() {
+    console.log("mounted sub===");
+    // 增加state监听，当msg数据发生变化的时候，我们修改name，体现在页面上
+    this.$onGlobalStateChange((state, prev) => {
+      if (state.msg !== prev.msg) {
+        this.msg = state.msg;
+      }
+    });
   },
   methods: {
     handleClick(param) {
@@ -30,6 +49,9 @@ export default {
         path: `/${param}`,
       });
     },
+    sendMessageToChildren(v) {
+      this.msg = v;
+    },
   },
 };
 </script>
@@ -37,6 +59,7 @@ export default {
 <style scoped>
 .option {
   padding-left: 40px;
+  width: 284px;
 }
 .option .el-button {
   display: block;

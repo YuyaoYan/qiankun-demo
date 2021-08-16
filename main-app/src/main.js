@@ -2,8 +2,14 @@ import Vue from "vue";
 import App from "./App.vue";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import { registerMicroApps, start, setDefaultMountApp } from "qiankun";
+import {
+  registerMicroApps,
+  start,
+  setDefaultMountApp,
+  initGlobalState
+} from "qiankun";
 import microApps from "./micro-app";
+import microConfig from "./micro-config";
 import router from "./router";
 
 Vue.config.productionTip = false;
@@ -14,54 +20,18 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-const config = {
-  beforeLoad: [
-    app => {
-      console.log(
-        "%c before load ",
-        "background:#A0522D ; padding: 1px; border-radius: 3px;  color: #fff",
-        app.name
-      );
-    }
-  ], // 挂载前回调
-  beforeMount: [
-    app => {
-      console.log(
-        "%c before mount ",
-        "background:#32CD32 ; padding: 1px; border-radius: 3px;  color: #fff",
-        app.name
-      );
-    }
-  ], // 挂载后回调
-  afterMount: [
-    app => {
-      console.log(
-        "%c after mount ",
-        "background:#006400 ; padding: 1px; border-radius: 3px;  color: #fff",
-        app.name
-      );
-    }
-  ],
-  beforeUnmount: [
-    app => {
-      console.log(
-        "%c before unload ",
-        "background:#C71585 ; padding: 1px; border-radius: 3px;  color: #fff",
-        app.name
-      );
-    }
-  ],
-  afterUnmount: [
-    app => {
-      console.log(
-        "%c after unload ",
-        "background:#800080 ; padding: 1px; border-radius: 3px;  color: #fff",
-        app.name
-      );
-    }
-  ] // 卸载后回调
-};
+// 主应用状态初始化
+// 通讯
+const actions = initGlobalState({
+  mt: "init" // 初始化state，里面内容您随意
+});
+// 在项目中任何需要监听的地方进行监听，在这里监听是为了方便
+actions.onGlobalStateChange((state, prev) => {
+  console.log("main state change", state);
+});
+// 将action对象绑到Vue原型上，为了项目中其他地方使用方便
+Vue.prototype.$actions = actions;
 
-registerMicroApps(microApps, config);
+registerMicroApps(microApps, microConfig);
 setDefaultMountApp(microApps[0].activeRule); // 默认打开第一个子项目
 start();

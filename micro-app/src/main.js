@@ -43,17 +43,29 @@ if (window.__POWERED_BY_QIANKUN__) {
 }
 
 export async function bootstrap() {
-  console.log('micro app bootstrap');
-
+  console.log("micro app bootstrap");
 }
 
 export async function mount(props) {
+  // render(props);
+  // console.log("micro app mount");
+
+  console.log("two mount", props);
+
+  // 设置主应用下发的方法
+  props.fn &&
+    Object.keys(props.fn).forEach(method => {
+      Vue.prototype[`$${method}`] = props.fn[method];
+    });
+
+  // 设置通讯
+  Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange;
+  Vue.prototype.$setGlobalState = props.setGlobalState;
   render(props);
-  console.log('micro app mount');
 }
 export async function unmount() {
   install.$destroy();
   install.$el.innerHTML = ""; // 子项目内存泄露问题
   install = null;
-  console.log('micro app unmount');
+  console.log("micro app unmount");
 }
