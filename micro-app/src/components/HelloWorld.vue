@@ -11,11 +11,10 @@
         <el-input
           size="small"
           v-model="sendMsg"
-          placeholder="与micro-app子应用通信"
+          placeholder="与main-app主应用通信"
           @change="sendMessageToFather"
         ></el-input>
       </p>
-      <p>Recived from sub-app: {{ msg }}</p>
     </div>
     <div class="content">
       <router-view />

@@ -17,12 +17,12 @@
           <el-input
             size="mini"
             v-model="msg"
-            placeholder="与子应用通信"
+            placeholder="与micro-app子应用通信"
             @change="sendMessageToChildren"
           ></el-input>
         </li>
         <li>
-          {{ childMsg || "Received from micro-app" }}
+          {{ childMsg || "Msg Received from micro-app" }}
         </li>
       </ul>
     </div>
