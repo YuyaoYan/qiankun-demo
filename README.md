@@ -1,4 +1,16 @@
 @[toc]
+- [qiankun 微前端 demo 说明](#qiankun-%E5%BE%AE%E5%89%8D%E7%AB%AF-demo-%E8%AF%B4%E6%98%8E)
+    + [1. 路由说明：](#1-%E8%B7%AF%E7%94%B1%E8%AF%B4%E6%98%8E)
+        * [1.1 hash 路由：](#11-hash-%E8%B7%AF%E7%94%B1)
+        * [1.2 history 路由：](#12-history-%E8%B7%AF%E7%94%B1)
+        * [路由切换](#%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2)
+    + [2. LifeCycles:](#2-lifecycles)
+    + [3. 父子通讯](#3-%E7%88%B6%E5%AD%90%E9%80%9A%E8%AE%AF)
+        * [3.1主应用与微应用的通信](#31%E4%B8%BB%E5%BA%94%E7%94%A8%E4%B8%8E%E5%BE%AE%E5%BA%94%E7%94%A8%E7%9A%84%E9%80%9A%E4%BF%A1)
+        * [3.2微应用之间的通信](#32%E5%BE%AE%E5%BA%94%E7%94%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1)
+    + [4. 手动加载微应用](#4-%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BD%E5%BE%AE%E5%BA%94%E7%94%A8)
+    + [5. css隔离](#5-css%E9%9A%94%E7%A6%BB)
+    + [6. js隔离](#6-js%E9%9A%94%E7%A6%BB)
 # qiankun 微前端 demo 说明
 
 启动：
@@ -142,7 +154,7 @@ actions.onGlobalStateChange((state, prev) => {
 2. 子应用通过`setGlobalState`改变状态
 3. 需要用到该状态的地方用`onGlobalStateChange` 监听
 
-### 3. 手动加载微应用
+### 4. 手动加载微应用
 官方提供了`loadMicroApp`用来[手动触发微应用加载](https://qiankun.umijs.org/zh/api#loadmicroappapp-configuration)。
 
 > 参考demo [http://localhost:4000/#/main/mainpage](http://localhost:4000/#/main/mainpage)
@@ -161,11 +173,11 @@ handleUnmountSubApp() {
  this.microApp.unmount();
 },
 ```
-### 4. css隔离
+### 5. css隔离
 shadow DOM
 [MDN shadow DOM](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)
 
-### 5. js隔离
+### 6. js隔离
 
 ### Trouble Shooting
 1. 微应用切换回主应用路由后，主应用页面不加载不显示。

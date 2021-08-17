@@ -74,7 +74,7 @@ export default {
   color: #42b983;
 }
 .content {
-  width: 60%;
+  width: 70%;
   height: calc(100% - 111px);
   position: absolute;
   right: 0;

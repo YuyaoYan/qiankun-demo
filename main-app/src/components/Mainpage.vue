@@ -45,7 +45,7 @@ export default {
   
 } */
 #content {
-  width: 70%;
+  width: 60%;
   height: calc(100% - 111px);
   position: absolute;
   right: 0;
