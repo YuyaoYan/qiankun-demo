@@ -1,13 +1,11 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import cloneDeep from "clone-deep";
 import App from "./App.vue";
 import routes from "./router";
 import store from "./store";
 import VueRouter from "vue-router";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import { name } from "../package.json";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(Vuex);
@@ -22,18 +20,6 @@ function render(props = {}) {
     routes
   });
 
-  // 增加路由判断
-  // if (window.__POWERED_BY_QIANKUN__) {
-  //   router.beforeEach((to, from, next) => {
-  //     // to and from are both route objects. must call `next`.
-  //     if (!to.path.includes("/sub")) {
-  //       next({ path: `/sub/${name}${to.path}` });
-  //     } else {
-  //       next();
-  //     }
-  //   });
-  // }
-  // let _store = initStore(props);
   install = new Vue({
     router,
     store,
@@ -63,6 +49,12 @@ export async function mount(props) {
   Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange;
   Vue.prototype.$setGlobalState = props.setGlobalState;
   render(props);
+
+  return new Promise((resolve, reject) => {
+    resolve()
+    // Always reject with an Error.
+    // reject(new Error('hi'));
+  });
 }
 export async function unmount() {
   install.$destroy();

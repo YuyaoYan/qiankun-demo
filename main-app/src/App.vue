@@ -3,7 +3,12 @@
     <div class="layout-header">
       <div class="logo">QIANKUN-MAIN</div>
       <ul class="sub-apps">
-        <li @click="jumpToMsinpage">main-app</li>
+        <li
+          :class="{ active: '/#/main/mainpage' === current }"
+          @click="jumpToMsinpage()"
+        >
+          main-app
+        </li>
         <li
           v-for="item in microApps"
           :class="{ active: item.activeRule === current }"
@@ -12,7 +17,9 @@
         >
           {{ item.name }}
         </li>
-        <li @click="jumpToApps">communicate btw sub apps</li>
+        <li :class="{ active: '/#/main/inpage' === current }" @click="jumpToApps">
+          communicate btw sub apps
+        </li>
         <li>
           <el-input
             size="mini"
@@ -22,7 +29,7 @@
           ></el-input>
         </li>
         <li>
-          {{ childMsg || "Msg Received from micro-app" }}
+          {{ childMsg || "👉 Msg Receiving from micro-app..." }}
         </li>
       </ul>
     </div>
@@ -41,7 +48,7 @@ export default {
   data() {
     return {
       microApps,
-      current: microApps[0].activeRule,
+      current: "",
       msg: "",
       // childMsg: "",
     };
@@ -53,8 +60,8 @@ export default {
   },
   methods: {
     goto(item) {
-      this.current = item.activeRule;
       history.pushState(null, item.activeRule, item.activeRule); // 没引入路由，所以不能用路由切换
+      this.resetCurrentPath();
     },
 
     // 跳转主应用页面
@@ -63,20 +70,25 @@ export default {
       this.$router.push({
         path: "/main/mainpage",
       });
+      this.resetCurrentPath();
     },
     jumpToApps() {
       this.$router.push({
         path: "/main/inpage",
       });
+      this.resetCurrentPath();
     },
     sendMessageToChildren(v) {
       this.$actions.setGlobalState({
         msg: v,
       });
     },
+    resetCurrentPath() {
+      let path = `/${window.location.hash}`;
+      this.current = path;
+    },
   },
   created() {
-    this.current = microApps[0].activeRule;
     let path = `/${window.location.hash}`;
     if (this.microApps.findIndex((item) => item.activeRule === path) >= 0) {
       this.current = path;
