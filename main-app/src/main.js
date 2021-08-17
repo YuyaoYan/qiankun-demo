@@ -10,7 +10,7 @@ import {
   setDefaultMountApp,
   initGlobalState
 } from "qiankun";
-import microApps from "./micro-app";
+import microApps, { apps } from "./micro-app";
 import microConfig from "./micro-config";
 import router from "./router";
 
@@ -32,17 +32,19 @@ new Vue({
 const actions = initGlobalState({
   mt: "init", // 初始化state
   msg: "",
-  sendMsg: ""
+  sendMsg: "",
+  inpageMsg: ""
 });
 // 在项目中任何需要监听的地方进行监听，在这里监听是为了方便
 actions.onGlobalStateChange((state, prev) => {
   console.log("main state change", state);
   _store.commit("updateMsg", state);
   _store.commit("updateSendMsg", state);
+  _store.commit("updateInpageMsg", state);
 });
 // 将action对象绑到Vue原型上，为了项目中其他地方使用方便
 Vue.prototype.$actions = actions;
 
-registerMicroApps(microApps, microConfig);
-setDefaultMountApp(microApps[0].activeRule); // 默认打开第一个子项目
+registerMicroApps(apps, microConfig);
+// setDefaultMountApp(microApps[0].activeRule); // 默认打开第一个子项目
 start();

@@ -7,12 +7,12 @@ import Subpages from "@/components/Subpages";
 Vue.use(Router);
 
 // 解决Vue-Router升级导致的Uncaught(in promise) navigation guard问题
-// const originalPush = Router.prototype.push;
-// Router.prototype.push = function push(location, onResolve, onReject) {
-//   if (onResolve || onReject)
-//     return originalPush.call(this, location, onResolve, onReject);
-//   return originalPush.call(this, location).catch(err => err);
-// };
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject)
+    return originalPush.call(this, location, onResolve, onReject);
+  return originalPush.call(this, location).catch(err => err);
+};
 
 export default new Router({
   routes: [
@@ -33,8 +33,8 @@ export default new Router({
           component: Mainpage
         },
         {
-          path: "/main/subapps",
-          name: "subapps",
+          path: "/main/inpage",
+          name: "inpage",
           exact: true,
           component: Subpages
         }

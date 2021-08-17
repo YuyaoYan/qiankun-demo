@@ -1,7 +1,8 @@
 const store = {
   state: {
     msg: "",
-    sendMsg: ""
+    sendMsg: "",
+    inpageMsg: ""
   },
   mutations: {
     updateMsg(state, newState) {
@@ -9,6 +10,9 @@ const store = {
     },
     updateSendMsg(state, newState) {
       state.sendMsg = newState.sendMsg;
+    },
+    updateInpageMsg(state, newState) {
+      state.inpageMsg = newState.inpageMsg;
     }
   },
   actions: {},

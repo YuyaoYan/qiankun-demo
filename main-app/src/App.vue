@@ -36,7 +36,6 @@
 
 <script>
 import microApps from "./micro-app";
-
 export default {
   name: "App",
   data() {
@@ -54,7 +53,6 @@ export default {
   },
   methods: {
     goto(item) {
-      console.log(item);
       this.current = item.activeRule;
       history.pushState(null, item.activeRule, item.activeRule); // 没引入路由，所以不能用路由切换
     },
@@ -67,9 +65,8 @@ export default {
       });
     },
     jumpToApps() {
-      // history.pushState(null, "/main/mainpage", "/main/mainpage"); // 没引入路由，所以不能用路由切换
       this.$router.push({
-        path: "/main/subapps",
+        path: "/main/inpage",
       });
     },
     sendMessageToChildren(v) {

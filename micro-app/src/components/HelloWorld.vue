@@ -60,7 +60,7 @@ export default {
 <style scoped>
 .option {
   padding-left: 40px;
-  width: 284px;
+  width: 265px;
 }
 .option .el-button {
   display: block;

@@ -23,16 +23,16 @@ function render(props = {}) {
   });
 
   // 增加路由判断
-  if (window.__POWERED_BY_QIANKUN__) {
-    router.beforeEach((to, from, next) => {
-      // to and from are both route objects. must call `next`.
-      if (!to.path.includes("/sub")) {
-        next({ path: `/sub/${name}${to.path}` });
-      } else {
-        next();
-      }
-    });
-  }
+  // if (window.__POWERED_BY_QIANKUN__) {
+  //   router.beforeEach((to, from, next) => {
+  //     // to and from are both route objects. must call `next`.
+  //     if (!to.path.includes("/sub")) {
+  //       next({ path: `/sub/${name}${to.path}` });
+  //     } else {
+  //       next();
+  //     }
+  //   });
+  // }
   // let _store = initStore(props);
   install = new Vue({
     router,

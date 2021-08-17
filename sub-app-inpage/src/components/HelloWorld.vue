@@ -1,15 +1,6 @@
 <template>
   <div class="base-container">
-    <div class="option">
-      <h1>{{ title }}</h1>
-      <el-button @click="() => handleClick('one')" plain>micro one</el-button>
-      <el-button @click="() => handleClick('two')" plain
-        >another micro</el-button
-      >
-    </div>
-    <div class="content">
-      <router-view />
-    </div>
+    {{ inpageMsg || "waiting for left micro-app‘s message..." }}
   </div>
 </template>
 
@@ -19,15 +10,15 @@ export default {
   data() {
     return {
       title: "Micro App",
-      msg: "",
+      inpageMsg: "",
       sendMsg: "",
     };
   },
   mounted() {
     // 增加state监听，当msg数据发生变化的时候，我们修改name，体现在页面上
     this.$onGlobalStateChange((state, prev) => {
-      if (state.msg !== prev.msg) {
-        this.msg = state.msg;
+      if (state.inpageMsg !== prev.inpageMsg) {
+        this.inpageMsg = state.inpageMsg;
       }
     });
   },

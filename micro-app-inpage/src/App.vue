@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <router-view />
+    <HelloWorld />
   </div>
 </template>
 
 <script>
+import HelloWorld from "./components/HelloWorld.vue";
 export default {
-  name: "App",
+  components: { HelloWorld },
+  name: "micro-app-inpage",
 };
 </script>
 
@@ -18,5 +20,4 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
 }
-
 </style>
