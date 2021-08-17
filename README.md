@@ -65,6 +65,9 @@ const routes = [
 ];
 ```
 ### 2. LifeCycles:
+全局的微应用生命周期钩子需要挂载在主应用上，作为`registerMicroApps`方法的第二个参数接收。在路由切换时，会销毁当前微应用。
+> 特殊情况下可能想做状态保持，并不想在切换路由时销毁当前微应用。
+> 可参考（qiankun keepalive）
 ```js
 type Lifecycle = (app: RegistrableApp) => Promise<any>;
 ```
@@ -88,6 +91,7 @@ type Lifecycle = (app: RegistrableApp) => Promise<any>;
 - 通过`qiankun`提供的`initGlobalState`初始化state。
 - `onGlobalStateChange`监听变化
 
+> 参考demo [http://localhost:4000/#/sub/micro-app](http://localhost:4000/#/sub/micro-app)
 ```js
 // 主应用状态初始化
 // 通讯
@@ -132,7 +136,36 @@ actions.onGlobalStateChange((state, prev) => {
 ```
 
 ##### 3.2微应用之间的通信
+思路同主子应用通信类似：
+> 参考demo [http://localhost:4000/#/main/inpage](http://localhost:4000/#/main/inpage)
+1. 主应用存放组件状态
+2. 子应用通过`setGlobalState`改变状态
+3. 需要用到该状态的地方用`onGlobalStateChange` 监听
 
+### 3. 手动加载微应用
+官方提供了`loadMicroApp`用来[手动触发微应用加载](https://qiankun.umijs.org/zh/api#loadmicroappapp-configuration)。
+
+> 参考demo [http://localhost:4000/#/main/mainpage](http://localhost:4000/#/main/mainpage)
+
+```js
+handleLoadSubApp() {
+ this.microApp = loadMicroApp({
+   name: "sub-app-inpage",
+   entry: "//localhost:4012",
+   container: "#content",
+   props: {},
+ });
+},
+handleUnmountSubApp() {
+ console.log("this.microApp's lifeCycle", this.microApp);
+ this.microApp.unmount();
+},
+```
+### 4. css隔离
+shadow DOM
+[MDN shadow DOM](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)
+
+### 5. js隔离
 
 ### Trouble Shooting
 1. 微应用切换回主应用路由后，主应用页面不加载不显示。
