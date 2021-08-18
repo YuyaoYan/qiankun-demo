@@ -183,7 +183,14 @@ shadow DOM
 ### 7. 打包
 两种情况：
 - 主应用和微应用部署到同一个服务器（同一个 IP 和端口）
-在根目录执行`npm run build`，然后找到主应用`main-app`下的dist文件即可。
+在根目录执行`npm run build`，然后找到主应用`main-app`下的dist文件即打包好的文件。
+
+express.js 利用 express-generator 本地模拟node，并测试效果：
+```
+根目录下进入 express-app 文件夹
+执行 npm start 启动 
+浏览器打开 localhost:8888 端口
+```
 
 - 主应用和微应用部署在不同的服务器，使用 Nginx 代理访问
 ### Trouble Shooting
