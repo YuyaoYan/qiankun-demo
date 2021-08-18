@@ -1,4 +1,4 @@
-@[toc]
+# qiankun 微前端 demo 说明
 - [qiankun 微前端 demo 说明](#qiankun-%E5%BE%AE%E5%89%8D%E7%AB%AF-demo-%E8%AF%B4%E6%98%8E)
     + [1. 路由说明：](#1-%E8%B7%AF%E7%94%B1%E8%AF%B4%E6%98%8E)
         * [1.1 hash 路由：](#11-hash-%E8%B7%AF%E7%94%B1)
@@ -11,7 +11,6 @@
     + [4. 手动加载微应用](#4-%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BD%E5%BE%AE%E5%BA%94%E7%94%A8)
     + [5. css隔离](#5-css%E9%9A%94%E7%A6%BB)
     + [6. js隔离](#6-js%E9%9A%94%E7%A6%BB)
-# qiankun 微前端 demo 说明
 
 启动：
 ```
@@ -179,5 +178,11 @@ shadow DOM
 
 ### 6. js隔离
 
+### 7. 打包
+两种情况：
+- 主应用和微应用部署到同一个服务器（同一个 IP 和端口）
+在根目录执行`npm run build`，然后找到主应用`main-app`下的dist文件即可。
+
+- 主应用和微应用部署在不同的服务器，使用 Nginx 代理访问
 ### Trouble Shooting
 1. 微应用切换回主应用路由后，主应用页面不加载不显示。

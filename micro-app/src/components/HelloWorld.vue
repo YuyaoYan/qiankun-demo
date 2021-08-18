@@ -34,11 +34,12 @@ export default {
   },
   mounted() {
     // 增加state监听，当msg数据发生变化的时候，我们修改name，体现在页面上
-    this.$onGlobalStateChange((state, prev) => {
-      if (state.msg !== prev.msg) {
-        this.msg = state.msg;
-      }
-    });
+    this.$onGlobalStateChange &&
+      this.$onGlobalStateChange((state, prev) => {
+        if (state.msg !== prev.msg) {
+          this.msg = state.msg;
+        }
+      });
   },
   methods: {
     handleClick(param) {
@@ -51,7 +52,7 @@ export default {
     },
     sendMessageToFather(v) {
       this.sendMsg = v;
-      this.$setGlobalState({ sendMsg: v });
+      this.$setGlobalState && this.$setGlobalState({ sendMsg: v });
     },
   },
 };
