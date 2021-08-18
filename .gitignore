@@ -1,3 +1,4 @@
 /node_modules/
 package-lock.json
 /express-app/node_modules/
+/express-app/public/
